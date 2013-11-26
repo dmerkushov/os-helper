@@ -20,7 +20,7 @@ import java.util.List;
 
 /**
  *
- * @author shandr
+ * @author Dmitriy Merkushov
  */
 public class OSHelper {
 

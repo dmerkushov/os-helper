@@ -6,7 +6,7 @@ package ru.dmerkushov.oshelper;
 
 /**
  *
- * @author shandr
+ * @author Dmitriy Merkushov
  */
 public class OSHelperException extends Exception {
 
