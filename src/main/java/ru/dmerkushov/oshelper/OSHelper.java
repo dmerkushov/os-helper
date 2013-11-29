@@ -178,7 +178,7 @@ public class OSHelper {
 	 * @throws OSHelperException
 	 * @deprecated Use ProcessReturn procWaitWithProcessReturn () instead
 	 */
-	public static int procWait (Process proc, final long timeout) throws OSHelperException {
+	public static int procWait (Process process, final long timeout) throws OSHelperException {
 		long endTime = Calendar.getInstance ().getTimeInMillis () + timeout;
 
 		boolean terminatedByItself = false;
@@ -186,7 +186,7 @@ public class OSHelper {
 
 		while (Calendar.getInstance ().getTimeInMillis () < endTime) {
 			try {
-				proc.exitValue ();
+				process.exitValue ();
 				terminatedByItself = true;
 				toReturn = osh_PROCESS_EXITED_BY_ITSELF;
 			} catch (IllegalThreadStateException ex) {
@@ -197,10 +197,10 @@ public class OSHelper {
 			}
 		}
 		if (!terminatedByItself) {
-			proc.destroy ();
+			process.destroy ();
 
 			try {
-				proc.waitFor ();
+				process.waitFor ();
 			} catch (InterruptedException ex) {
 				throw new OSHelperException (ex);
 			}
